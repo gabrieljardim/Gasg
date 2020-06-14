@@ -123,7 +123,7 @@ public:
 
     void draw(T& surface ) {
 
-        auto data = surface.getBuffer().data();
+        auto data = surface.data();
         auto width =  surface.getWidth();
         auto height = surface.getHeight();
         auto colortype = surface.getColorType();
