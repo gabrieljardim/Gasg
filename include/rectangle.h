@@ -14,7 +14,7 @@ public:
     return m_width;
   }
   inline int height() const {
-    return m_width;
+    return m_height;
   }
 
   inline const Point2d& position() const {

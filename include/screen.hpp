@@ -14,7 +14,6 @@
 
 #include "surface.h"
 
-template<typename T>
 class Screen {
 public:
     Screen(std::size_t width, std::size_t height) :
@@ -121,6 +120,7 @@ public:
 
     }
 
+    template<typename T>
     void draw(T& surface ) {
 
         auto data = surface.data();
