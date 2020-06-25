@@ -14,12 +14,11 @@ public:
       return;
     }
 
-    for(int i = rect.position().x(); i < rect.position().x() + rect.width(); ++i){
-          for(int j = rect.position().y(); j < rect.position().y() + rect.height(); ++j){
+    for(int i = rect.position().y(); i < rect.position().y() + rect.height(); ++i)
+        for(int j = rect.position().x(); j < rect.position().x() + rect.width(); ++j) {
             surface[i][j] = color;
             radius = 2;
-          }
-    }
+        }
   }
 };
 #endif // PAINTER_HPP

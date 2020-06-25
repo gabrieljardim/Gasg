@@ -7,8 +7,8 @@
 #include <chrono>
 int main()
 {
-  const int testWidth = 1280;
-  const int testHeight = 720;
+  const int testWidth = 500;
+  const int testHeight = 500;
     //==================TEXTURE 1========================
     Surface<testWidth,testHeight, ColorType::Rgb24bpp> texture1;
 
@@ -46,16 +46,40 @@ int main()
     auto texture3Height = texture3.getHeight();
 
     painter.drawRectangleFill(texture3, Rectangle(texture3Width, texture3Height, Point2d(0, 0)), Color<ColorType::Rgb24bpp>(200,200,200));
-    painter.drawRectangleFill(texture3, Rectangle(300, 400, Point2d(30, 30)), Color<ColorType::Rgb24bpp>(50, 20, 150));
+    painter.drawRectangleFill(texture3, Rectangle(300, 10, Point2d(10, 10)), Color<ColorType::Rgb24bpp>(50, 20, 150));
+    painter.drawRectangleFill(texture3, Rectangle(310, 10, Point2d(10, 30)), Color<ColorType::Rgb24bpp>(50, 20, 150));
+    painter.drawRectangleFill(texture3, Rectangle(320, 10, Point2d(10, 50)), Color<ColorType::Rgb24bpp>(0, 255, 0));
+    painter.drawRectangleFill(texture3, Rectangle(330, 10, Point2d(10, 70)), Color<ColorType::Rgb24bpp>(0, 0, 255));
 
     //=====================================================
+
+
+
+    //==================TEXTURE 4========================
+    Surface<testWidth,testHeight, ColorType::Rgb24bpp> texture4;
+    //Painter<ColorType::Rgb24bpp> painter;
+
+    auto texture4Width = texture3.getWidth();
+    auto texture4Height = texture3.getHeight();
+
+    for(std::size_t i = 0; i < texture4Width; ++i) {
+        for(std::size_t j = 0; j < texture4Height; ++j) {
+            if(i == j) {
+                texture4[i][j] = Color<ColorType::Rgb24bpp>(255, 255, 255);
+            }
+        }
+    }
+    //=====================================================
+
+
+
 
     Screen screen(texture1.getWidth(), texture1.getHeight());
     screen.init();
 
     int i = 0;
     do {
-        switch(i%3) {
+        switch(i%4) {
         case 0:
           screen.draw(texture1);
           break;
@@ -65,8 +89,12 @@ int main()
         case 2:
           screen.draw(texture3);
           break;
+        case 3:
+          screen.draw(texture4);
+          break;
         }
         i++;
+
 
         glfwPollEvents();
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));

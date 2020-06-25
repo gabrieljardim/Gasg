@@ -30,9 +30,9 @@ class Color<ColorType::Rgb24bpp> {
 public:
   Color(){}
   Color(int r, int g, int b) {
-    m_rgb[0] = static_cast<std::uint8_t>(r);
+    m_rgb[0] = static_cast<std::uint8_t>(b);
     m_rgb[1] = static_cast<std::uint8_t>(g);
-    m_rgb[2] = static_cast<std::uint8_t>(b);
+    m_rgb[2] = static_cast<std::uint8_t>(r);
   }
 private:
   std::uint8_t m_rgb[3];
